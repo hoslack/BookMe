@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/hoslack/BookMe#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "env2": "^2.2.0",
+    "express": "^4.16.2",
+    "pg": "^7.4.0"
   },
   "devDependencies": {
     "nodemon": "^1.13.3",
