@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "A haven for readers",
   "main": "index.js",
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.6.0"
+  },
   "scripts": {
-    "test": "node tests/test.js"
+    "test": "node tests/test.js",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +22,10 @@
   },
   "homepage": "https://github.com/hoslack/BookMe#readme",
   "dependencies": {
-    "env2": "^2.2.0",
     "express": "^4.16.2",
-    "pg": "^7.4.0"
+    "mongoose": "^4.13.7",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.13.3",
