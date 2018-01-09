@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+
 import Header from '../containers/Header';
 
 const Books = () => <h1>Books</h1>;
 const Landing = () => <h1>Landing</h1>;
 
 class App extends Component {
+	componentDidMount() {
+		this.props.fetchUser();
+	}
 	render() {
 		return (
-			<div>
+			<div className="container">
 				<BrowserRouter>
 					<div>
 						<Header />
@@ -21,4 +27,4 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default connect(null, actions)(App);
