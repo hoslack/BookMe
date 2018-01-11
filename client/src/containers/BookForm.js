@@ -17,13 +17,13 @@ class BookForm extends Component {
 			<div>
 				<form onSubmit={this.props.handleSubmit(values => console.log(values))}>
 					{this.renderFields()}
-					<Link to="/" className="tealt btn red left">
+					<Link to="/books" className="tealt btn red left">
 						Cancel
 						<i class="material-icons right">cancel</i>
 					</Link>
 					<button type="submit" className="tealt btn right">
 						Submit
-						<i class="material-icons right">done</i>
+						<i class="material-icons right">send</i>
 					</button>
 				</form>
 			</div>
