@@ -31,6 +31,19 @@ class BookForm extends Component {
 	}
 }
 
+const validate = values => {
+	const errors = {};
+	if (!values.title) {
+		errors.title = 'Please enter a title';
+	}
+	if (!values.descritpion) {
+		errors.descritpion = 'Please enter a title';
+	}
+
+	return errors;
+};
+
 export default reduxForm({
+	validate,
 	form: 'bookForm',
 })(BookForm);
