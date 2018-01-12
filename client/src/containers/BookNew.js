@@ -10,7 +10,7 @@ class BookNew extends Component {
 		return (
 			<div>
 				<Field label="Book Title" type="text" name="title" component={BookField} />
-				<Field label="Descritpion" type="text" name="descritpion" component={BookField} />
+				<Field label="Description" type="text" name="description" component={BookField} />
 			</div>
 		);
 	}

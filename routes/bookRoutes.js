@@ -3,7 +3,7 @@ const requireLogin = require('../middleWares/requireLogin');
 const Book = mongoose.model('books');
 
 module.exports = app => {
-	app.post('/api/addbook', (req, res) => {
+	app.post('/api/addbook', requireLogin, (req, res) => {
 		const { title, description } = req.body;
 		const book = new Book({
 			title,
@@ -16,6 +16,16 @@ module.exports = app => {
 			})
 			.catch(err => {
 				res.status(400).send('unable to send to database');
+			});
+	});
+
+	app.get('/api/books', (req, res) => {
+		Book.find()
+			.then(books => {
+				res.send(books);
+			})
+			.catch(err => {
+				res.status(400).send('unable to read from database');
 			});
 	});
 };
