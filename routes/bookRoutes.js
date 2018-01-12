@@ -3,16 +3,19 @@ const requireLogin = require('../middleWares/requireLogin');
 const Book = mongoose.model('books');
 
 module.exports = app => {
-	app.post('api/addbook', requireLogin, (req, res) => {
-		const { title, description, image } = req.body;
-
+	app.post('/api/addbook', (req, res) => {
+		const { title, description } = req.body;
 		const book = new Book({
 			title,
 			description,
-			image,
-			_user: req.user.id,
 		});
-
-		book.save();
+		book
+			.save()
+			.then(books => {
+				res.send('item saved to database');
+			})
+			.catch(err => {
+				res.status(400).send('unable to send to database');
+			});
 	});
 };

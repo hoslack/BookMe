@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { Link } from 'react-router-dom';
 import BookField from './BookField';
+import { connect } from 'react-redux';
+import { submitBook } from '../actions';
 
 class BookForm extends Component {
 	renderFields() {
@@ -12,10 +14,16 @@ class BookForm extends Component {
 			</div>
 		);
 	}
+
+	onSubmit(values) {
+		this.props.submitBook(values);
+	}
+
 	render() {
+		const { handleSubmit } = this.props;
 		return (
 			<div>
-				<form onSubmit={this.props.handleSubmit(values => console.log(values))}>
+				<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 					{this.renderFields()}
 					<Link to="/books" className="tealt btn red left">
 						Cancel
@@ -46,4 +54,4 @@ const validate = values => {
 export default reduxForm({
 	validate,
 	form: 'bookForm',
-})(BookForm);
+})(connect(null, { submitBook })(BookForm));

@@ -7,7 +7,6 @@ import Header from '../containers/Header';
 import BookNew from '../containers/BookNew';
 import BooksShow from '../containers/BooksShow';
 
-const Books = () => <h1>Books</h1>;
 const Landing = () => <h1>Landing</h1>;
 
 class App extends Component {
