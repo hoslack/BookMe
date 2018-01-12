@@ -7,7 +7,7 @@ export const fetchUser = () => async dispatch => {
 	dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const submitBook = values => async dispatch => {
-	const res = await axios.post('/api/addbook', values);
+export const submitBook = (values, callback) => async dispatch => {
+	const res = await axios.post('/api/addbook', values).then(() => callback());
 	dispatch({ type: SUBMIT_BOOK, payload: res.data });
 };
