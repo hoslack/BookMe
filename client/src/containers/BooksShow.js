@@ -19,7 +19,6 @@ class BooksShow extends Component {
 		});
 	}
 	render() {
-		console.log(this.props.books);
 		return (
 			<div>
 				<ul className="collection">{this.renderBooks()}</ul>
