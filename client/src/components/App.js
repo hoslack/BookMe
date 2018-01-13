@@ -6,7 +6,6 @@ import * as actions from '../actions';
 import Header from '../containers/Header';
 import BookNew from '../containers/BookNew';
 import BooksShow from '../containers/BooksShow';
-import Image from '../containers/image';
 
 const Landing = () => <h1>Landing</h1>;
 
@@ -24,7 +23,6 @@ class App extends Component {
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/books" component={BooksShow} />
 						<Route exact path="/books/new" component={BookNew} />
-						<Route exact path="/image" component={Image} />
 					</div>
 				</BrowserRouter>
 			</div>
