@@ -10,6 +10,10 @@ import { submitBook } from '../actions';
 import keys from '../config/keys';
 
 class BookNew extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
 	renderFields() {
 		return (
 			<div>
@@ -49,7 +53,9 @@ class BookNew extends Component {
 				return;
 			}
 
+			this.setState({ url: res.body.url });
 			console.log('Upload Successful', JSON.stringify(res.body.url));
+			console.log('State:', this.state);
 		});
 	}
 
@@ -63,7 +69,7 @@ class BookNew extends Component {
 		const { handleSubmit } = this.props;
 		return (
 			<div>
-				<Dropzone onDrop={this.uploadFile.bind(this)} />
+				<Dropzone onDrop={this.uploadFile.bind(this)}>Photo</Dropzone>
 				<form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 					{this.renderFields()}
 					<Link to="/books" className="tealt btn red left">
@@ -85,8 +91,8 @@ const validate = values => {
 	if (!values.title) {
 		errors.title = 'Please enter a title';
 	}
-	if (!values.descritpion) {
-		errors.descritpion = 'Please enter a title';
+	if (!values.description) {
+		errors.description = 'Please enter a title';
 	}
 
 	return errors;
