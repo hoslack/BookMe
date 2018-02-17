@@ -1,31 +1,10 @@
-const mongoose = require('mongoose');
 const requireLogin = require('../middleWares/requireLogin');
-const Book = mongoose.model('books');
+const addBook = require('../controllers/addBook');
+const showBooks = require('../controllers/showBooks');
+const router = require('express').Router();
 
-module.exports = app => {
-	app.post('/api/addbook', requireLogin, (req, res) => {
-		const { title, description } = req.body;
-		const book = new Book({
-			title,
-			description,
-		});
-		book
-			.save()
-			.then(books => {
-				res.send('item saved to database');
-			})
-			.catch(err => {
-				res.status(400).send('unable to send to database');
-			});
-	});
+router.post('/addbook', requireLogin, addBook);
 
-	app.get('/api/books', (req, res) => {
-		Book.find()
-			.then(books => {
-				res.send(books);
-			})
-			.catch(err => {
-				res.status(400).send('unable to read from database');
-			});
-	});
-};
+router.get('/books', showBooks);
+
+module.exports = router;
