@@ -1,17 +1,10 @@
 const requireLogin = require('../middleWares/requireLogin');
 const addBook = require('../controllers/addBook');
+const showBooks = require('../controllers/showBooks');
 const router = require('express').Router();
 
 router.post('/addbook', requireLogin, addBook);
 
-router.get('/api/books', (req, res) => {
-	Book.find()
-		.then(books => {
-			res.send(books);
-		})
-		.catch(err => {
-			res.status(400).send('unable to read from database');
-		});
-});
+router.get('/books', showBooks);
 
 module.exports = router;

@@ -3,24 +3,20 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
-const keys = require('./config/keys');
+require('env2')('./config.env');
 const authRoutes = require('./routes/authRoutes');
 const bookRoutes = require('./routes/bookRoutes');
 const port = process.env.PORT || 5000;
 const host = process.env.HOST || 'localhost';
 
-require('./models/User');
-require('./models/Book');
-require('./services/passport');
-
-mongoose.connect(keys.mongoURI);
+mongoose.connect(process.env.mongoURI);
 
 const app = express();
 
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey],
+    keys: [process.env.cookieKey],
   })
 );
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -74,11 +74,11 @@ class BookNew extends Component {
 					{this.renderFields()}
 					<Link to="/books" className="tealt btn red left">
 						Cancel
-						<i class="material-icons right">cancel</i>
+						<i className="material-icons right">cancel</i>
 					</Link>
 					<button type="submit" className="tealt btn right">
 						Submit
-						<i class="material-icons right">send</i>
+						<i className="material-icons right">send</i>
 					</button>
 				</form>
 			</div>

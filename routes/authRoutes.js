@@ -1,5 +1,6 @@
 const passport = require('passport');
 const router = require('express').Router();
+require('../services/passport');
 const redirectAfterLogin = require('../controllers/redirectAfterLogin');
 const logout = require('../controllers/logout');
 const getCurrentUser = require('../controllers/getCurrentUser');
